@@ -1,0 +1,46 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Προσθηκη νεου μαθητη</title>
+</head>
+<body>
+    <label>Ονομα</label>
+    <input type="text" id="fname"> 
+    <br>
+    <label>Eπωνυμο</label>
+    <input type="text" id="lname">
+    <br>
+    <label>Μαθημα</label>
+    <input type="text" id="mathima">
+    <br>
+    <label>Παρατηρησεις</label>
+    <input type="text" id="description">
+    <br>
+    <button type="submit" id="button">add</button>    
+         <a  href="select.html""><button type="submit">Select</button></a>  
+    <script>
+        $(document).ready(function(){
+            $("#button").click(function(){
+                var fname=$("#fname").val();
+                var lname=$("#lname").val();
+                var mathima=$("#mathima").val();
+                var description=$("#description").val();
+                $.ajax({
+                    url:'insert.php',
+                    method:'POST',
+                    data:{
+                        fname:fname,
+                        lname:lname,
+                        mathima:mathima,
+                        description:description
+                    },
+                   success:function(data){
+                       alert(data);
+                   }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
